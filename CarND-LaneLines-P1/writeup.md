@@ -1,21 +1,24 @@
 # **Finding Lane Lines on the Road** 
 
-## Writeup Template
+White                      |  Yellow
+:-------------------------:|:-------------------------:
+![]./image_output/white.gif)  |  ![](./image_output/yellow.gif)
 
-### You can use this file as a template for your writeup if you want to submit it as a markdown file. But feel free to use some other method and submit a pdf if you prefer.
+[image1]: ./image_output/white.gif
+
+[image2]: ./examples/grayscale.jpg "Grayscale"
 
 ---
 
-**Finding Lane Lines on the Road**
+1) Read/Upload the image to be processed.
+2) Conversion into Gray Scale (cv library).
+3) Canny Edge detection in order to higlight edges.
+4) Define a polynomial region of interest (where to find lane lines).
+5) Hough Transformation in order to identify points building a line.
+6) Line drawing
+7) Overlay of the two images (lines detected + original image).
+8) Output testing.
 
-The goals / steps of this project are the following:
-* Make a pipeline that finds lane lines on the road
-* Reflect on your work in a written report
-
-
-[//]: # (Image References)
-
-[image1]: ./examples/grayscale.jpg "Grayscale"
 
 ---
 
