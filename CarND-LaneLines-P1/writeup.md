@@ -1,6 +1,6 @@
 # **Finding Lane Lines on the Road** 
 
-White                      |  Yellow
+White Output               | Yellow Output
 :-------------------------:|:-------------------------:
 ![](./image_output/white.gif) |  ![](./image_output/yellow.gif)
 
@@ -14,11 +14,26 @@ The pipeline consists in 8 steps, including the ouput testing.
 
 First step is to upload the image that has to be processed.
 
-![Starting image](./image_output/starting_image.png)
+![Starting image](./image_output/starting.png)
 
-2) Conversion into Gray Scale (cv library).
-3) Canny Edge detection in order to higlight edges.
-4) Define a polynomial region of interest (where to find lane lines).
+### 2) Conversion into Gray Scale (cv library)
+
+Once the image is uploaded, it is converted to a gray scaled one to start highlighting the pixel gradients.
+
+![Gray scaled image](./image_output/grayscale.png)
+
+### 3) Canny Edge detection in order to higlight edges.
+
+Canny Edge Detection is based on gradient, meaning how fast are x and y changning. It is expected to find edges where pixel values change rapidly (road lines).
+
+![Edge Detected](./image_output/edge.png)
+
+### 4) Define a polynomial region of interest (where to find lane lines).
+
+In an image, only a region of interest has to be taken into account, where our lines will be. For this reason, a mask is created in order to higlight edges where required.
+
+![Edge Masked](./image_output/edgemasked.png)
+
 5) Hough Transformation in order to identify points building a line.
 6) Line drawing
 7) Overlay of the two images (lines detected + original image).
