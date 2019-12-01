@@ -34,28 +34,18 @@ In an image, only a region of interest has to be taken into account, where our l
 
 ![Edge Masked](./image_output/edgemasked.png)
 
-5) Hough Transformation in order to identify points building a line.
-6) Line drawing
-7) Overlay of the two images (lines detected + original image).
-8) Output testing.
+### 5) Hough Transformation in order to identify points building a line.
 
+![Edge Masked](./image_output/houghtransform.png)
 
----
+### 6) Line drawing
 
-### Reflection
+![Edge Masked](./image_output/linedrawn.png)
 
-### 1. ### Reflection
+### 7) Overlay of the two images (lines detected + original image).
 
-### 2. Identify potential shortcomings with your current pipeline
+![Edge Masked](./image_output/finalimage.png)
 
+### 8) Output testing.
 
-One potential shortcoming would be what would happen when ... 
-
-Another shortcoming could be ...
-
-
-### 3. Suggest possible improvements to your pipeline
-
-A possible improvement would be to ...
-
-Another potential improvement could be to ...
+Finally, the whole chain is run with sample images and videos.
