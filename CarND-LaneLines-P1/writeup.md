@@ -2,11 +2,8 @@
 
 White                      |  Yellow
 :-------------------------:|:-------------------------:
-![]./image_output/white.gif)  |  ![](./image_output/yellow.gif)
+![](./image_output/white.gif) |  ![](./image_output/yellow.gif)
 
-[image1]: ./image_output/white.gif
-
-[image2]: ./examples/grayscale.jpg "Grayscale"
 
 ---
 
