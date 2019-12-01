@@ -78,7 +78,7 @@ Last part of the pipeline is to overlay the starting image with the one with the
 
 This is related to the points highlighted in the previous section: 
 
-    A) A possible improvement would be to develop a smarter line fitting, including polynoms greater thatn 1 grade in order           to have a good curvature representation.
+  A) A possible improvement would be to develop a smarter line fitting, including polynoms greater thatn 1 grade in order           to have a good curvature representation.
 
-     B) Another potential improvement could be to improve the region if interest so that it follows the driver line of vision         on the road
+  B) Another potential improvement could be to improve the region if interest so that it follows the driver line of vision         on the road
 
