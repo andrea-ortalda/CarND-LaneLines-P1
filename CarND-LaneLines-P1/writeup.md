@@ -14,37 +14,37 @@ The pipeline consists in 8 steps, including the ouput testing.
 
 First step is to upload the image that has to be processed.
 
-![Starting image](./image_output/starting.png)
+![Starting image](./image_output/starting.png?style=centerme)
 
 ### 2) Conversion into Gray Scale (cv library)
 
 Once the image is uploaded, it is converted to a gray scaled one to start highlighting the pixel gradients.
 
-![Gray scaled image](./image_output/grayscale.png)
+![Gray scaled image](./image_output/grayscale.png?style=centerme)
 
 ### 3) Canny Edge detection in order to higlight edges.
 
 Canny Edge Detection is based on gradient, meaning how fast are x and y changning. It is expected to find edges where pixel values change rapidly (road lines).
 
-![Edge Detected](./image_output/edge.png)
+![Edge Detected](./image_output/edge.png?style=centerme)
 
 ### 4) Define a polynomial region of interest (where to find lane lines).
 
 In an image, only a region of interest has to be taken into account, where our lines will be. For this reason, a mask is created in order to higlight edges where required.
 
-![Edge Masked](./image_output/edgemasked.png)
+![Edge Masked](./image_output/edgemasked.png?style=centerme)
 
 ### 5) Hough Transformation in order to identify points building a line.
 
-![Edge Masked](./image_output/houghtransform.png)
+![Edge Masked](./image_output/houghtransform.png?style=centerme)
 
 ### 6) Line drawing
 
-![Edge Masked](./image_output/linedrawn.png)
+![Edge Masked](./image_output/linedrawn.png?style=centerme)
 
 ### 7) Overlay of the two images (lines detected + original image).
 
-![Edge Masked](./image_output/finalimage.png)
+![Edge Masked](./image_output/finalimage.png?style=centerme)
 
 ### 8) Output testing.
 
