@@ -36,15 +36,21 @@ In an image, only a region of interest has to be taken into account, where our l
 
 ### 5) Hough Transformation in order to identify points building a line.
 
-->![Edge Masked](./image_output/houghtransform.png)<-
+A transofrmation into the Hough Space is then performed in order to find the line that pass through all the points that a re making a line.
+
+->![Hough Transofrmation](./image_output/houghtransform.png)<-
 
 ### 6) Line drawing
 
-->![Edge Masked](./image_output/linedrawn.png)<-
+Once the line are highlightes, an average and extrapolation of their points is performed in order to draw the road lines.
+
+->![Road Lines Drawn](./image_output/linedrawn.png)<-
 
 ### 7) Overlay of the two images (lines detected + original image).
 
-->![Edge Masked](./image_output/finalimage.png)<-
+Last part of the pipeline is to overlay the starting image with the one with the lines drawn.
+
+->![Images overlayed](./image_output/finalimage.png)<-
 
 ### 8) Output testing.
 
