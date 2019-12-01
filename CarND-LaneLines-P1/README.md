@@ -1,56 +1,57 @@
 # **Finding Lane Lines on the Road** 
-[![Udacity - Self-Driving Car NanoDegree](https://s3.amazonaws.com/udacity-sdc/github/shield-carnd.svg)](http://www.udacity.com/drive)
 
-<img src="examples/laneLines_thirdPass.jpg" width="480" alt="Combined Image" />
+White Output               | Yellow Output
+:-------------------------:|:-------------------------:
+![](./image_output/white.gif) |  ![](./image_output/yellow.gif)
 
-Overview
+
 ---
+### Pipeline
 
-When we drive, we use our eyes to decide where to go.  The lines on the road that show us where the lanes are act as our constant reference for where to steer the vehicle.  Naturally, one of the first things we would like to do in developing a self-driving car is to automatically detect lane lines using an algorithm.
+The pipeline consists in 8 steps, including the ouput testing.
 
-In this project you will detect lane lines in images using Python and OpenCV.  OpenCV means "Open-Source Computer Vision", which is a package that has many useful tools for analyzing images.  
+### 1) Read/Upload the image to be processed
 
-To complete the project, two files will be submitted: a file containing project code and a file containing a brief write up explaining your solution. We have included template files to be used both for the [code](https://github.com/udacity/CarND-LaneLines-P1/blob/master/P1.ipynb) and the [writeup](https://github.com/udacity/CarND-LaneLines-P1/blob/master/writeup_template.md).The code file is called P1.ipynb and the writeup template is writeup_template.md 
+First step is to upload the image that has to be processed.
 
-To meet specifications in the project, take a look at the requirements in the [project rubric](https://review.udacity.com/#!/rubrics/322/view)
+->![Starting image](./image_output/starting.png)<-
 
+### 2) Conversion into Gray Scale (cv library)
 
-Creating a Great Writeup
----
-For this project, a great writeup should provide a detailed response to the "Reflection" section of the [project rubric](https://review.udacity.com/#!/rubrics/322/view). There are three parts to the reflection:
+Once the image is uploaded, it is converted to a gray scaled one to start highlighting the pixel gradients.
 
-1. Describe the pipeline
+->![Gray scaled image](./image_output/grayscale.png)<-
 
-2. Identify any shortcomings
+### 3) Canny Edge detection in order to higlight edges.
 
-3. Suggest possible improvements
+Canny Edge Detection is based on gradient, meaning how fast are x and y changning. It is expected to find edges where pixel values change rapidly (road lines).
 
-We encourage using images in your writeup to demonstrate how your pipeline works.  
+->![Edge Detected](./image_output/edge.png)<-
 
-All that said, please be concise!  We're not looking for you to write a book here: just a brief description.
+### 4) Define a polynomial region of interest (where to find lane lines).
 
-You're not required to use markdown for your writeup.  If you use another method please just submit a pdf of your writeup. Here is a link to a [writeup template file](https://github.com/udacity/CarND-LaneLines-P1/blob/master/writeup_template.md). 
+In an image, only a region of interest has to be taken into account, where our lines will be. For this reason, a mask is created in order to higlight edges where required.
 
+->![Edge Masked](./image_output/edgemasked.png)<-
 
-The Project
----
+### 5) Hough Transformation in order to identify points building a line.
 
-## If you have already installed the [CarND Term1 Starter Kit](https://github.com/udacity/CarND-Term1-Starter-Kit/blob/master/README.md) you should be good to go!   If not, you should install the starter kit to get started on this project. ##
+A transofrmation into the Hough Space is then performed in order to find the line that pass through all the points that a re making a line.
 
-**Step 1:** Set up the [CarND Term1 Starter Kit](https://github.com/udacity/CarND-Term1-Starter-Kit/blob/master/README.md) if you haven't already.
+->![Hough Transofrmation](./image_output/houghtransform.png)<-
 
-**Step 2:** Open the code in a Jupyter Notebook
+### 6) Line drawing
 
-You will complete the project code in a Jupyter notebook.  If you are unfamiliar with Jupyter Notebooks, check out [Udacity's free course on Anaconda and Jupyter Notebooks](https://classroom.udacity.com/courses/ud1111) to get started.
+Once the line are highlightes, an average and extrapolation of their points is performed in order to draw the road lines.
 
-Jupyter is an Ipython notebook where you can run blocks of code and see results interactively.  All the code for this project is contained in a Jupyter notebook. To start Jupyter in your browser, use terminal to navigate to your project directory and then run the following command at the terminal prompt (be sure you've activated your Python 3 carnd-term1 environment as described in the [CarND Term1 Starter Kit](https://github.com/udacity/CarND-Term1-Starter-Kit/blob/master/README.md) installation instructions!):
+->![Road Lines Drawn](./image_output/linedrawn.png)<-
 
-`> jupyter notebook`
+### 7) Overlay of the two images (lines detected + original image).
 
-A browser window will appear showing the contents of the current directory.  Click on the file called "P1.ipynb".  Another browser window will appear displaying the notebook.  Follow the instructions in the notebook to complete the project.  
+Last part of the pipeline is to overlay the starting image with the one with the lines drawn.
 
-**Step 3:** Complete the project and submit both the Ipython notebook and the project writeup
+->![Images overlayed](./image_output/finalimage.png)<-
 
-## How to write a README
-A well written README file can enhance your project and portfolio.  Develop your abilities to create professional README files by completing [this free course](https://www.udacity.com/course/writing-readmes--ud777).
+### 8) Output testing.
 
+Finally, the whole chain is run with sample images and videos.
