@@ -12,29 +12,27 @@ image = mpimg.imread('signs_vehicles_xygrad.png')
 # then takes an absolute value and applies a threshold.
 # Note: calling your function with orient='x', thresh_min=20, thresh_max=100
 # should produce output like the example image shown above this quiz.
+# Define a function that takes an image, gradient orientation,
+# and threshold min / max values.
 def abs_sobel_thresh(img, orient='x', thresh_min=0, thresh_max=255):
-    
-    # Apply the following steps to img
-    # 1) Convert to grayscale
+    # Convert to grayscale
     gray = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)
-    # 2) Take the derivative in x or y given orient = 'x' or 'y'
-    x = 0
-    y = 0
+    # Apply x or y gradient with the OpenCV Sobel() function
+    # and take the absolute value
     if orient == 'x':
-        x = 1
-    else:
-        y = 1
-    sobel = cv2.Sobel(gray, cv2.CV_64F, x, y)
-    # 3) Take the absolute value of the derivative or gradient
-    abs_sobel = np.absolute(sobel)
-    # 4) Scale to 8-bit (0 - 255) then convert to type = np.uint8
+        abs_sobel = np.absolute(cv2.Sobel(gray, cv2.CV_64F, 1, 0))
+    if orient == 'y':
+        abs_sobel = np.absolute(cv2.Sobel(gray, cv2.CV_64F, 0, 1))
+    # Rescale back to 8 bit integer
     scaled_sobel = np.uint8(255*abs_sobel/np.max(abs_sobel))
-    # 5) Create a mask of 1's where the scaled gradient magnitude
-    binary_output = [(scaled_sobel >= thresh_min), (scaled_sobel <= thresh_max)]
-            # is > thresh_min and < thresh_max
-    # 6) Return this mask as your binary_output image
+    # Create a copy and apply the threshold
+    binary_output = np.zeros_like(scaled_sobel)
+    # Here I'm using inclusive (>=, <=) thresholds, but exclusive is ok too
+    binary_output[(scaled_sobel >= thresh_min) & (scaled_sobel <= thresh_max)] = 1
+
+    # Return the result
     return binary_output
-    
+
 # Run the function
 grad_binary = abs_sobel_thresh(image, orient='x', thresh_min=20, thresh_max=100)
 # Plot the result
