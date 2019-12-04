@@ -22,9 +22,7 @@ def dir_threshold(img, sobel_kernel=3, thresh=(0, np.pi/2)):
     absgraddir = np.arctan2(np.absolute(sobely), np.absolute(sobelx))
     binary_output =  np.zeros_like(absgraddir)
     binary_output[(absgraddir >= thresh[0]) & (absgraddir <= thresh[1])] = 1
-
     # Return the binary image
-    return binary_output
     return binary_output
     
 # Run the function
